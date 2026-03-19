@@ -269,27 +269,23 @@
 
 <script>
     // Initialisation EmailJS
-    // Remplacez 'YOUR_PUBLIC_KEY' par votre clé publique EmailJS
     emailjs.init("-20BT3EYPPI4RFetC");
 
     document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Récupération des valeurs
+        // Récupération des valeurs (UNIQUEMENT les champs qui existent)
         const formData = {
             nomPrenom: document.getElementById('nomPrenom').value,
             email: document.getElementById('email').value,
             promotion: document.getElementById('promotion').value,
             specialisation: document.getElementById('specialisation').value,
-            role: document.querySelector('input[name="role"]:checked').value,
             paysCulture: document.getElementById('paysCulture').value,
-            atelier: document.querySelector('input[name="atelier"]:checked').value,
             demarchesAdmin: document.querySelector('input[name="demarchesAdmin"]:checked').value,
             confirmationPresence: document.getElementById('confirmationPresence').checked ? "Oui" : "Non"
         };
 
         // Envoi via EmailJS
-        // Remplacez 'YOUR_SERVICE_ID' et 'YOUR_TEMPLATE_ID' par vos identifiants
         emailjs.send("service_1i41am5", "template_09y7827", formData)
             .then(function(response) {
                 document.getElementById('successMessage').style.display = 'block';
@@ -307,6 +303,5 @@
             });
     });
 </script>
-
 </body>
 </html>
